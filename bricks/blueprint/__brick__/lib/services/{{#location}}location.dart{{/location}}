@@ -1,0 +1,51 @@
+import 'dart:developer';
+
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
+
+class LocationServices {
+  static Future<bool> isLocationServiceEnabled() async {
+    return await Geolocator.isLocationServiceEnabled();
+  }
+
+  static Future<LocationPermission> checkPermission() async {
+    return await Geolocator.checkPermission();
+  }
+
+  static Future<LocationPermission> requestPermission() async {
+    return await Geolocator.requestPermission();
+  }
+
+  static Future<Position> getCurrentPosition() async {
+    return await Geolocator.getCurrentPosition();
+  }
+
+  static Future<Position?> getLocation() async {
+    bool isLocationServiceEnabled = await checkLocationAvailability();
+    LocationPermission permission = await checkPermission();
+    if (isLocationServiceEnabled &&
+        (permission == LocationPermission.whileInUse ||
+            permission == LocationPermission.always)) {
+      var location = await Geolocator.getCurrentPosition();
+      return location;
+    } else {
+      LocationPermission permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.always ||
+          permission == LocationPermission.whileInUse) {
+        var location = await Geolocator.getCurrentPosition();
+        return location;
+      }
+      await navigateToLocationSettings();
+    }
+  }
+
+  static Future navigateToLocationSettings() async {
+    await Geolocator.openLocationSettings();
+  }
+
+  static Future AddressByCoordinates(Position position) async {
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+    return placemarks[0].street;
+  }
+}
