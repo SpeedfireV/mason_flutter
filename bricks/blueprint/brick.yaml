@@ -65,10 +65,12 @@ vars:
       - riverpod
       - freezed
       - go router
+      - basic theme
     values:
       - riverpod
       - freezed
       - go router
+      - basic theme
       - authentication
       - location
       - stripe
@@ -96,4 +98,5 @@ vars:
       - images
       - videos
       - gif
+      - fonts
     

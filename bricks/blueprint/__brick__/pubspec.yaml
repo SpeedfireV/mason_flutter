@@ -59,20 +59,29 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  
   assets:
     {{#icons}}
-    - assets/icons/
+    - lib/assets/icons/
     {{/icons}}
     {{#images}}
-    - assets/images/
+    - lib/assets/images/
     {{/images}}
     {{#videos}}
-    - assets/videos/
+    - lib/assets/videos/
     {{/videos}}
     {{#gif}}
-    - assets/gif/
+    - lib/assets/gif/
     {{/gif}}
     
-    
+  {{#fonts}}
+  fonts:
+    - family: # TODO: FAMILY NAME
+      fonts:
+        - asset: # TODO: FONT_DIRECTORY
+        - asset: # TODO: (style) FONT DIRECTORY
+          style: # TODO: STYLE
+        - asset: # TODO: (weight) FONT DIRECTORY
+          weight: # TODO: (int) FONT WEIGHT
+  {{/fonts}}  
     

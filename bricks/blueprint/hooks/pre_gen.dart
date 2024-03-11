@@ -35,7 +35,8 @@ void run(HookContext context) {
   context.vars['icons'] = assets.contains('icons');
   context.vars['images'] = assets.contains('images');
   context.vars['videos'] = assets.contains('videos');
-  context.vars['images'] = assets.contains('gif');
+  context.vars['gif'] = assets.contains('gif');
+  context.vars['fonts'] = assets.contains('fonts');
 
   if (context.vars['firestore'] || context.vars['stripe']) {
     context.vars['env'] = true;

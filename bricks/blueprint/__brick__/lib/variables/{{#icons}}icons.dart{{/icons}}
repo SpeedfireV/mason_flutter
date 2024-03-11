@@ -1,0 +1,4 @@
+//TODO: _directory = "lib/assets/icons/"
+class AppImages {
+  //TODO: static final customImage = "${_directory}image_name.extension";
+}
