@@ -38,6 +38,13 @@ void run(HookContext context) {
   context.vars['gif'] = assets.contains('gif');
   context.vars['fonts'] = assets.contains('fonts');
 
+  // MinSdkVersion
+  context.vars['minSdkVersion'] = null;
+
+  if (context.vars['containsLogo']) {
+    context.vars['minSdkVersion'] = 21;
+  }
+
   if (context.vars['firestore'] || context.vars['stripe']) {
     context.vars['env'] = true;
   }
